@@ -25,6 +25,8 @@
         %>
     </head>
     <body>
+        
+        
               
         <table border="1" cellspacing="0" cellpadding="" align="center" class="table text-center col-7" style="font-size: 12px; margin-top:30px !important">
             
@@ -58,7 +60,9 @@
             <td><%out.print(rs.getString(3));%></td> 
             <td><%out.print(rs.getString(4));%></td> 
             <td><%out.print(rs.getString(5));%></td> 
-            <td><%out.print(rs.getString(6));%></td> 
+            <td><%out.print(rs.getString(6));%></td>
+            <td><a href="datoscurso.jsp?f_accion=E&f_idcurso=<%out.print(ide);%>">Eliminar</a></td>
+            <td>Editar</td>
            
         </tr>
                     
