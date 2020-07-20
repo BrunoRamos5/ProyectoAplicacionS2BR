@@ -24,7 +24,7 @@
             <tr>
                 <th colspan="8" >Datos Estudiante</th>
             </tr>    
-                <th class="text-center">ID</th>
+                <th class="text-center">#</th>
                 <th class="text-center">Nombre</th>
                 <th class="text-center">Apellidos</th>
                 <th class="text-center">DNI</th>
@@ -42,17 +42,21 @@
                         + " from estudiante";
                 pst = cn.prepareStatement(consulta);
                 rs = pst.executeQuery();
-               
+                int num = 0;
+                String ide;
+        
                 while (rs.next()){
+                ide = rs.getString(1);
+                num++;
         %>         
         <tr>
-            <td><%out.print(rs.getString(1));%></td> 
+            <td><%out.print(num);%></td> 
             <td><%out.print(rs.getString(2));%></td> 
             <td><%out.print(rs.getString(3));%></td> 
             <td><%out.print(rs.getString(4));%></td> 
             <td><%out.print(rs.getString(5));%></td> 
             <td><%out.print(rs.getString(6));%></td> 
-            <td>Eliminar</td>
+            <td><a href="datosestudiante.jsp?f_accion=E&f_idestudiante=<%out.print(ide);%>">Eliminar</a></td>
             <td>Editar</td>
         </tr>
                     
