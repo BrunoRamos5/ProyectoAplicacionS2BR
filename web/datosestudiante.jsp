@@ -33,41 +33,51 @@
                 s_accion = request.getParameter("f_accion");
                 s_idestudiante = request.getParameter("f_idestudiante");
                 if ( s_accion != null && s_accion.equals("M1")){
+                    consulta = "select nombre, apellidos, dni, codigo, estado "
+                            + " from estudiante"
+                            + " where "
+                            + " idestudiante = " + s_idestudiante;
+                    //out.print(consulta);
+                    pst = cn.prepareStatement(consulta);
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+              
                     %>
                     
          <form name="EditarEstudianteForm" action="datosestudiante.jsp" method="GET">
             <table border="0" align="center">
                 <thead>
                     <tr>
-                        <th colspan="2">Editar Estudiante</th>
+                        <th class="text-center" colspan="2">Editar Estudiante</th>
                         
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Nombres: </td>
-                        <td><input type="text" name="f_nombre" value="" maxlength="30" size="25" /></td>
+                        <td><input type="text" name="f_nombre" value=" <% out.print(rs.getString(1)); %>" maxlength="30" size="25" /></td>
                     </tr>
                     <tr>
                         <td>Apellidos: </td>
-                        <td><input type="text" name="f_apellidos" value="" maxlength="40" size="25"/></td>
+                        <td><input type="text" name="f_apellidos" value="<% out.print(rs.getString(2)); %>" maxlength="40" size="25"/></td>
                     </tr>
                     <tr>
                         <td>DNI: </td>
-                        <td><input type="text" name="f_dni" value="" maxlength="9" size="15"/></td>
+                        <td><input type="text" name="f_dni" value="<% out.print(rs.getString(3)); %>" maxlength="9" size="15"/></td>
                     </tr>
                     <tr>
                         <td>Código: </td>
-                        <td><input type="text" name="f_codigo" value="" maxlength="12" size="8"/></td>
+                        <td><input type="text" name="f_codigo" value="<% out.print(rs.getString(4)); %>" maxlength="12" size="8"/></td>
                     </tr>
                     <tr>
                         <td>Estado: </td>
-                        <td><input type="text" name="f_estado" value="" maxlength="1" size="2"/></td>
+                        <td><input type="text" name="f_estado" value="<% out.print(rs.getString(5)); %>" maxlength="1" size="2"/></td>
                     </tr>
                     <tr align="center">
                         <td colspan="2">
                             <input type="submit" value="Editar" name="f_editar" />
                             <input type="hidden" name="f_accion" value="M2" />
+                            <input type="hidden" name="f_idestudiante" value="<%out.print(s_idestudiante);%>" />
                         
                         </td>
                     </tr>
@@ -75,7 +85,8 @@
             </table>
         </form>            
          <%
-            
+          
+            }
          }else{ 
 
         %>           
@@ -88,7 +99,7 @@
             <table border="0" align="center">
                 <thead>
                     <tr>
-                        <th colspan="2">Agregar Estudiante</th>
+                        <th class="text-center" colspan="2">Agregar Estudiante</th>
                         
                     </tr>
                 </thead>
@@ -117,6 +128,7 @@
                         <td colspan="2">
                             <input type="submit" value="Agregar" name="f_agregar" />
                             <input type="hidden" name="f_accion" value="C" />
+                            
                         
                         </td>
                     </tr>
@@ -169,7 +181,25 @@
                             //out.print(consulta);
                             pst = cn.prepareStatement(consulta);
                             pst.executeUpdate();
-                    }                    
+                    }else if (s_accion.equals("M2")) {
+                            s_nombre = request.getParameter("f_nombre");
+                            s_apellidos = request.getParameter("f_apellidos");
+                            s_dni = request.getParameter("f_dni");
+                            s_codigo = request.getParameter("f_codigo");
+                            s_estado = request.getParameter("f_estado");
+                            consulta =  "   update estudiante  "
+                                        + " set  "
+                                        + " nombre = '"+ s_nombre +"', "
+                                        + " apellidos = '" + s_apellidos + "', "
+                                        + " dni = '" + s_dni + "', "
+                                        + " codigo = '" + s_codigo + "', "
+                                        + " estado = '" + s_estado + "'  "
+                                        + " where  "
+                                        + " idestudiante = " + s_idestudiante + "; ";
+                            //out.print(consulta);
+                            pst = cn.prepareStatement(consulta);
+                            pst.executeUpdate();
+                }
                 }
             
                 
@@ -197,6 +227,9 @@
                     
         <% 
                 }
+                    rs.close();
+                    pst.close();
+                    cn.close();
             }catch(Exception e){
                 out.print("ERROR SQL");
             }
