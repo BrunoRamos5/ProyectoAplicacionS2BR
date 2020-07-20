@@ -25,24 +25,41 @@
         %>
     </head>
     <body>
-        
-        
-              
+          
         <table border="1" cellspacing="0" cellpadding="" align="center" class="table text-center col-7" style="font-size: 12px; margin-top:30px !important">
             
             <thead class="thead-dark">
                 <th class="text-center">#</th>
-                <th class="text-center">CODIGO</th>
-                <th class="text-center">CURSO</th>
-                <th class="text-center">TH</th>
-                <th class="text-center">TC</th>
-                <th class="text-center">ESTADO</th>
+                <th class="text-center">Codigo</th>
+                <th class="text-center">Curso</th>
+                <th class="text-center">Total Horas</th>
+                <th class="text-center">Total Creditos</th>
+                <th class="text-center">Estado</th>
+                <th class="text-center">Eliminar</th>
+                <th class="text-center">Editar</th>
             </thead>   
         <%
             try {
             
                 ConectaBd bd = new ConectaBd();
                 cn = bd.getConnection();
+                s_accion = request.getParameter("f_accion");
+                s_idcurso = request.getParameter("f_idcurso");
+                
+                
+                 if (s_accion !=null) {
+                    if (s_accion.equals("E")) {
+                            consulta =    " delete from curso "
+                                        + " where  "
+                                        + " idcurso = " + s_idcurso +"; ";
+                            //out.print(consulta);
+                            pst = cn.prepareStatement(consulta);
+                            pst.executeUpdate();
+                    
+                }}
+                
+               
+                
                 consulta = " Select idcurso, codigo, nombre, horas, creditos, estado "
                         + " from curso";
                 pst = cn.prepareStatement(consulta);
