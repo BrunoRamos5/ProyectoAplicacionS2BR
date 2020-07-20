@@ -35,24 +35,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Nombres:</td>
-                        <td><input type="text" name="f_nombre" value="" /></td>
+                        <td>Nombres: </td>
+                        <td><input type="text" name="f_nombre" value="" maxlength="30" size="25" /></td>
                     </tr>
                     <tr>
-                        <td>Apellidos:</td>
-                        <td><input type="text" name="f_apellidos" value="" /></td>
+                        <td>Apellidos: </td>
+                        <td><input type="text" name="f_apellidos" value="" maxlength="40" size="25"/></td>
                     </tr>
                     <tr>
                         <td>DNI: </td>
-                        <td><input type="text" name="f_dni" value="" /></td>
+                        <td><input type="text" name="f_dni" value="" maxlength="9" size="15"/></td>
                     </tr>
                     <tr>
                         <td>Código: </td>
-                        <td><input type="text" name="f_codigo" value="" /></td>
+                        <td><input type="text" name="f_codigo" value="" maxlength="12" size="8"/></td>
                     </tr>
                     <tr>
                         <td>Estado: </td>
-                        <td><input type="text" name="f_estado" value="" /></td>
+                        <td><input type="text" name="f_estado" value="" maxlength="1" size="2"/></td>
                     </tr>
                     <tr align="center">
                         <td colspan="2">
