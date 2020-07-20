@@ -45,8 +45,8 @@
                     %>
                     
          <form name="EditarEstudianteForm" action="datosestudiante.jsp" method="GET">
-            <table border="0" align="center">
-                <thead>
+            <table border="1" cellspacing="0" cellpadding="" align="center" class="table col-2" style="font-size: 12px; margin-top:30px !important">
+                <thead class="thead-dark">
                     <tr>
                         <th class="text-center" colspan="2">Editar Estudiante</th>
                         
@@ -92,12 +92,10 @@
         %>           
                     
                
-                
-               
         
         <form name="AgregarEstudianteForm" action="datosestudiante.jsp" method="GET">
-            <table border="0" align="center">
-                <thead>
+            <table border="1" cellspacing="0" cellpadding="" align="center" class="table col-2" style="font-size: 12px; margin-top:30px !important">
+                <thead class="thead-dark">
                     <tr>
                         <th class="text-center" colspan="2">Agregar Estudiante</th>
                         
