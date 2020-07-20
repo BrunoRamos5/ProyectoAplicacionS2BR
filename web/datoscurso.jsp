@@ -25,6 +25,46 @@
         %>
     </head>
     <body>
+        
+        <form name="AgregarCursoForm" action="datoscurso.jsp" method="GET">
+            <table border="0" align="center">
+                <thead>
+                    <tr>
+                        <th class="text-center" colspan="2">Agregar Curso</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Codigo:</td>
+                        <td><input type="text" name="f_codigo" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Curso:</td>
+                        <td><input type="text" name="f_nombre" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Horas:</td>
+                        <td><input type="text" name="f_horas" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Creditos:</td>
+                        <td><input type="text" name="f_creditos" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Estado:</td>
+                        <td><input type="text" name="f_estado" value="" /></td>
+                    </tr>
+                    <tr align="center">
+                        <td colspan="2">
+                            <input type="submit" value="Agregar" name="f_agregar" />
+                            <input type="hidden" name="f_accion" value="C" />
+                        
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
           
         <table border="1" cellspacing="0" cellpadding="" align="center" class="table text-center col-7" style="font-size: 12px; margin-top:30px !important">
             
@@ -56,7 +96,21 @@
                             pst = cn.prepareStatement(consulta);
                             pst.executeUpdate();
                     
-                }}
+                }else if(s_accion.equals("C")){
+                            s_codigo = request.getParameter("f_codigo");
+                            s_nombre = request.getParameter("f_nombre");
+                            s_horas = request.getParameter("f_horas");
+                            s_creditos = request.getParameter("f_creditos");
+                            s_estado = request.getParameter("f_estado");
+                         
+                            consulta =    " insert into "
+                                        + " curso ( codigo, nombre, horas, creditos, estado)"
+                                        + " values('"+ s_codigo +"','"+ s_nombre +"','"+ s_horas +"','"+ s_creditos +"','"+s_estado+"');  ";
+                            //out.print(consulta);
+                            pst = cn.prepareStatement(consulta);
+                            pst.executeUpdate();
+                    }
+                 }
                 
                
                 
